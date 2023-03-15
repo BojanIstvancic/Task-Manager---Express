@@ -1,3 +1,5 @@
+require("./db/connect");
+// if function is executed in module then we just need to require the module, we don't need to assign it
 const express = require("express");
 const app = express();
 const tasks = require("./routes/tasks");
