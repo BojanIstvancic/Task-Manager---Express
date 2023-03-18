@@ -5,6 +5,7 @@ const connectDB = require("./db/connect");
 require("dotenv").config();
 // dotenv - dependacy so we can access ENV FILES
 const notFound = require("./middleware/not-found");
+const errorHandlerMiddleware = require("./middleware/error-handler");
 
 // middleware
 // express.json() - to get a payload in request body (post)
@@ -15,6 +16,7 @@ app.use("/api/v1/tasks", tasks);
 // routes
 app.use(notFound);
 // cover all not existing routes - not found
+app.use(errorHandlerMiddleware);
 
 const port = 3000;
 
