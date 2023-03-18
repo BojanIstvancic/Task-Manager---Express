@@ -33,10 +33,6 @@ const getTask = async (req, res) => {
   }
 };
 
-const updateTask = (req, res) => {
-  res.send("Update a task");
-};
-
 const deleteTask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
@@ -52,6 +48,25 @@ const deleteTask = async (req, res) => {
   } catch (error) {
     res.status(404).json({ msg: error });
   }
+};
+
+const updateTask = async (req, res) => {
+  try {
+    const { id: taskID } = req.params;
+
+    const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    // by default we get the old values
+    // we need to add options if we want new (updated) document
+
+    if (!task) {
+      return res.status(404).json({ msg: `There's no task with id ${taskID}` });
+    }
+
+    res.status(200).json({ task });
+  } catch (errpr) {}
 };
 
 module.exports = {

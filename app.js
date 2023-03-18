@@ -7,7 +7,8 @@ require("dotenv").config();
 
 // middleware
 // express.json() - to get a payload in request body (post)
-app.use([express.json()]);
+app.use(express.static("./public"));
+app.use(express.json());
 
 // routes
 app.use("/api/v1/tasks", tasks);
