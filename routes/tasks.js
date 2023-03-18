@@ -10,5 +10,7 @@ const {
 
 router.route("/").get(getAllTasks).post(createTask);
 router.route("/:id").get(getTask).patch(updateTask).delete(deleteTask);
+// PUT - replace the existing resource
+// PATCH - partial update - just provided fields will be updated
 
 module.exports = router;
