@@ -18,7 +18,7 @@ app.use(notFound);
 // cover all not existing routes - not found
 app.use(errorHandlerMiddleware);
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const start = async () => {
   /*
